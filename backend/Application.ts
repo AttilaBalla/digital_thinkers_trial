@@ -4,7 +4,7 @@ import {FormulaDriverRoutes} from "./routes/FormulaDriverRoutes";
 
 dotenv.config();
 
-const port = process.env.port as any || 8000
+const port = process.env.PORT as any || 8000
 
 export class Application {
     public static async createApplication() {

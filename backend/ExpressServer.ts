@@ -28,7 +28,8 @@ export class ExpressServer {
     }
 
     private configureEndpoints(server: Express) {
-        server.get("/drivers", this.formulaDriverRoutes.getAllDrivers)
+        server.get("/api/drivers", this.formulaDriverRoutes.getAllDrivers)
+        server.post("/api/drivers/:driverId/overtake", this.formulaDriverRoutes.overtakeDriver)
     }
 
 
