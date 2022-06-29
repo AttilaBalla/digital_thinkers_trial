@@ -1,21 +1,11 @@
-import express, { Express, Request, Response } from 'express';
-import dotenv from 'dotenv';
-import {Bootstrap} from "./bootstrap";
+import { Application } from './Application'
 
-dotenv.config();
+/**
+ * Entrypoint for bootstrapping and starting the application.
+ * Might configure aspects like logging, telemetry, memory leak observation or even orchestration before.
+ * This is about to come later!
+ */
 
-const app: Express = express();
-const port = process.env.PORT;
-
-//const driversRoute = require('/routes/formulaDriverRoutes.ts');
-// app.use('/drivers', driversRoute)
-
-app.get('/', (req: Request, res: Response) => {
-    res.send('Express + TypeScript Server');
-});
-
-Bootstrap.bootstrapDriverData();
-
-app.listen(port, () => {
-    console.log(`⚡️[server]: Server is running at http://localhost:${port}`);
-});
+Application.createApplication().then(() => {
+    console.info('The application was started! Kill it using Ctrl + C')
+})
