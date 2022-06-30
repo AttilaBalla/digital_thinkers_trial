@@ -13,8 +13,10 @@
 /backend/dist
 
 # misc
+.next
 .DS_Store
 /backend/.env
+/frontend/.env
 .env.local
 .env.development.local
 .env.test.local
