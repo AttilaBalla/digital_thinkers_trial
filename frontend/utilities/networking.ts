@@ -29,3 +29,7 @@ function request<T>(url: string, method: string): Promise<T> {
 export function getDrivers(): Promise<FormulaDriver[]> {
     return request<FormulaDriver[]>('drivers', 'GET');
 }
+
+export function overtake(overtakingDriverId: number): Promise<FormulaDriver[]> {
+    return request<FormulaDriver[]>(`drivers/${overtakingDriverId}/overtake`, 'POST');
+}

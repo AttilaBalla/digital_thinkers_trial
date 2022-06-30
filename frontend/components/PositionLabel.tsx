@@ -7,7 +7,7 @@ interface IProps {
 
 export const PositionLabel:React.FC<IProps> = ({position}) => {
 
-    let suffix = "";
+    let suffix;
     switch(position) {
         case 1: suffix = 'st'
             break
