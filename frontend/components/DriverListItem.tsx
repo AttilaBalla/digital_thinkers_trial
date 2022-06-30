@@ -18,7 +18,6 @@ export const DriverListItem: React.FC<IProps> = ({driver, index}) => {
     const queryClient = useQueryClient()
     const overtakeMutation = useMutation(overtake, {
         onSuccess: (data) => {
-            console.log('this runs')
             queryClient.setQueryData('formulaDrivers', data)
         }
     })
@@ -41,7 +40,7 @@ export const DriverListItem: React.FC<IProps> = ({driver, index}) => {
                     <Avatar alt={`${driver.firstname} ${driver.lastname}`}
                             src={`${assetUrl}/${driver.code.toLowerCase()}.png`}/>
                 </ListItemAvatar>
-                <PositionLabel position={index + 1}/>
+                <PositionLabel position={index + 1} driverCode={driver.code}/>
                 <ListItemText primary={`${driver.firstname} ${driver.lastname}`}
                               secondary={`${driver.team} ${driver.country}`}/>
             </ListItem>
