@@ -14,7 +14,8 @@ export class ExpressServer {
     public setup(port: number) {
         const server = express()
 
-        InMemoryDriverService.bootstrapDriverData();
+        InMemoryDriverService.bootstrapDriverData()
+        this.configureStaticAssets(server)
         this.configureEndpoints(server)
 
         this.httpServer = this.listen(server, port)
@@ -25,6 +26,10 @@ export class ExpressServer {
     public listen(server: Express, port: number) {
         console.info(`Starting server on port ${port}`)
         return server.listen(port)
+    }
+
+    private configureStaticAssets(server: Express) {
+        server.use('/assets', express.static('assets/img/'))
     }
 
     private configureEndpoints(server: Express) {
