@@ -9,9 +9,9 @@ interface IProps {
 
 export const DriverList:React.FC<IProps> = ({formulaDrivers}) => {
     return (
-        <List sx={{width: '100%', maxWidth: 360, bgcolor: 'background.paper'}}>
+        <List sx={{width: '100%', bgcolor: 'background.paper'}}>
             {formulaDrivers.map((driver, key) => {
-                return <DriverListItem driver={driver} key={key}/>
+                return <DriverListItem driver={driver} index={key} key={key}/>
             })}
         </List>
     )
