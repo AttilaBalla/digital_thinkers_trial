@@ -16,6 +16,7 @@ export class ExpressServer {
 
         InMemoryDriverService.bootstrapDriverData()
         this.configureStaticAssets(server)
+        this.allowCrossOriginRequests(server)
         this.configureEndpoints(server)
 
         this.httpServer = this.listen(server, port)
@@ -30,6 +31,14 @@ export class ExpressServer {
 
     private configureStaticAssets(server: Express) {
         server.use('/assets', express.static('assets/img/'))
+    }
+
+    private allowCrossOriginRequests(server: Express) {
+        server.use((req, res, next) => {
+            res.header("Access-Control-Allow-Origin", "*");
+            res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+            next();
+        })
     }
 
     private configureEndpoints(server: Express) {
